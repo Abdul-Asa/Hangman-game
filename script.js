@@ -1,41 +1,98 @@
-myDisplay = document.querySelector("#display");
-userInput = document.querySelector("#userIn");
-myButton = document.querySelector("#check");
-myComment = document.querySelector("#comment")
-//Query selector of all the fields
+var myDisplay = document.querySelector("#display");
+var userInput = document.querySelectorAll(".userIn");
+var myComment = document.querySelector("#comment");
+var tryA = document.querySelector("#tryAgain");
+var container1 = document.querySelector(".container1");
+var container2 = document.querySelector(".container2");
+var container3 = document.querySelector(".container3");
+var nextButton = document.querySelector("#nextQ");
+var exitButton = document.querySelector("#bye");
 
-var meals = ["rice","amala","indomie","fufu",];
-var randomPick = Math.floor(Math.random()*meals.length);
-var answer = meals[randomPick];
-var question = [];
-//initialize all the variables used
+container2.style.display="none";
+container3.style.display="none";
 
-for(let i=0; i<answer.length;i++){
-    question.push("_");
+var meals = ["SPIDERMAN","SUPERMAN","HULK","HAWKEYE","FLASH"];
+var question ;
+var loop = 0;
+var answer;
+
+function playGame(){ 
+    answer = meals[loop];
+    myComment.style.display="none";
+    tryA.style.display="none";
+    container2.style.display="none";
+    container3.style.display="none";    
+    question=[];
+   
+    for(let i=0; i < answer.length;i++){
+        question.push("_");
+    }
+    myDisplay.innerHTML = question.join(" ");
+    console.log(answer); 
 }
-//Use a loop to create the dashes
 
-myDisplay.innerHTML = question.join(" ");
-console.log(answer); 
-
-function checkAnswer(){
+function checkAnswer(u){
     var bool = false;
+    var completeWord = true;
     for(let i=0; i<answer.length;i++){
-        if(userInput.value == answer[i]){
+        if(u.value == answer[i]){
             bool = true;
             question[i] = answer[i];
-            //If it matches, it removes the dash and replaces it with the right answer
         }
     }
 
     myDisplay.innerHTML = question.join(" ");
     if (bool == true) {
+        myComment.style.display="block";
         myComment.innerHTML = "Correct"
         
     } else {
+        myComment.style.display="block";
         myComment.innerHTML = "Wrong"
     }
+    for(let i=0; i<answer.length;i++){
+        if(question[i] == "_"){
+            completeWord = false; 
+        }
+    }
+    if(completeWord == true){
+        tryA.style.display="block";
+        tryA.innerHTML = "Complete 👍🏽";
+        container2.style.display="block";
+        loop++;
+        if(loop==meals.length){
+            nextButton.style.display="none";
 
+        }
+    }
+
+} 
+
+function byeBye(){
+    container1.style.display="none";
+    container2.style.display="none";
+    container3.style.display= "block";
 }
 
-myButton.addEventListener("click",checkAnswer);
+function callBack(event){
+   
+    checkAnswer(event.target);
+}
+
+
+playGame();
+
+nextButton.addEventListener("click",playGame);
+for(let i=0;i<userInput.length;i++){
+    userInput[i].addEventListener("click",callBack);
+}
+
+exitButton.addEventListener("click", byeBye);
+
+
+
+
+
+
+
+    
