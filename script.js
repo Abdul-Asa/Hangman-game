@@ -1,6 +1,5 @@
 var myDisplay = document.querySelector("#display");
-var userInput = document.querySelector("#userIn");
-var myButton = document.querySelector("#check");
+var userInput = document.querySelectorAll(".userIn");
 var myComment = document.querySelector("#comment");
 var tryA = document.querySelector("#tryAgain");
 var container1 = document.querySelector(".container1");
@@ -12,30 +11,31 @@ var exitButton = document.querySelector("#bye");
 container2.style.display="none";
 container3.style.display="none";
 
-var meals = ["rice","amala","indomie","fufu",];
+var meals = ["SPIDERMAN","SUPERMAN","HULK","HAWKEYE","FLASH"];
 var question ;
 var loop = 0;
 var answer;
 
-function playGame(){
+function playGame(){ 
+    answer = meals[loop];
     myComment.style.display="none";
     tryA.style.display="none";
     container2.style.display="none";
     container3.style.display="none";    
     question=[];
-    answer = meals[loop];
-    for(let i=0; i<answer.length;i++){
+   
+    for(let i=0; i < answer.length;i++){
         question.push("_");
     }
     myDisplay.innerHTML = question.join(" ");
     console.log(answer); 
 }
 
-function checkAnswer(){
+function checkAnswer(u){
     var bool = false;
     var completeWord = true;
     for(let i=0; i<answer.length;i++){
-        if(userInput.value == answer[i]){
+        if(u.value == answer[i]){
             bool = true;
             question[i] = answer[i];
         }
@@ -55,14 +55,14 @@ function checkAnswer(){
             completeWord = false; 
         }
     }
-    if(completeWord==true){
+    if(completeWord == true){
         tryA.style.display="block";
         tryA.innerHTML = "Complete 👍🏽";
         container2.style.display="block";
         loop++;
-
-        if(loop == meals.length){
+        if(loop==meals.length){
             nextButton.style.display="none";
+
         }
     }
 
@@ -73,10 +73,20 @@ function byeBye(){
     container2.style.display="none";
     container3.style.display= "block";
 }
+
+function callBack(event){
+   
+    checkAnswer(event.target);
+}
+
+
 playGame();
 
-nextButton.addEventListener("click",playGame)
-myButton.addEventListener("click",checkAnswer);
+nextButton.addEventListener("click",playGame);
+for(let i=0;i<userInput.length;i++){
+    userInput[i].addEventListener("click",callBack);
+}
+
 exitButton.addEventListener("click", byeBye);
 
 

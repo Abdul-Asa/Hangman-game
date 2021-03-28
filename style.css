@@ -2,3 +2,42 @@ body{
     margin: 50px;
     text-align: center;
 }
+
+header{
+    font-size: 56px;
+    background-color: black;
+    color: white;
+}
+.container1{
+    display: block;
+    
+
+}
+.buttons{
+
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    grid-template-rows:auto;
+    justify-items: center;
+    grid-gap: 10px;
+    padding: 10px;
+    margin-left: 270px;
+    margin-right: 270px;
+}
+.buttons > button{
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    padding: px 0;
+    border-radius: 0%;
+    outline: none;
+}
+
+.buttons > button:hover{
+    background-color: grey;
+}
+
+#display{
+    font-size: 50px;
+    color: brown;
+}
