@@ -18,7 +18,7 @@ var question ;
 var loop = 0;
 var answer;
 var lives = 5;  
-var str;
+var str = '';
     
 
 function playGame(){ 
