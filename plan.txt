@@ -1,0 +1,61 @@
+HANGMAN GAME - ENHANCED VERSION
+
+DATA STRUCTURE:
+- countries array: objects with {name, hint} properties
+- question array: displayed word with blanks and guessed letters
+- answer variable: current country name
+- currentCountry: current country object with name and hint
+
+CORE FUNCTIONS:
+1. playGame()
+   - Randomly selects unused country from countries array
+   - Tracks used countries to ensure no repeats
+   - Resets game when all countries completed
+   - Displays hint for the country
+   - Creates blank spaces for letters
+   - Resets button states and UI
+
+2. checkAnswer(button)
+   - Checks if guessed letter is in the country name
+   - Updates display with correct letters
+   - Handles wrong guesses (reduces lives)
+   - Disables clicked buttons
+   - Checks for game completion
+   - Shows answer if failed
+
+3. Keyboard Support
+   - handleKeyPress(): responds to keyboard A-Z input during gameplay
+   - Maps keyboard input to button clicks
+   - Spacebar: triggers "Next" button when game is completed/failed
+   - Escape key: triggers "Exit" button when game is completed/failed
+   - Smart state detection: only allows letter input during active gameplay
+   - resetButtonStates(): enables buttons for new game
+
+FEATURES:
+✅ 100+ countries with educational hints
+✅ Interactive hint system with country facts
+✅ Full keyboard support (A-Z keys, Spacebar=Next, Esc=Exit)
+✅ Button state management (disable used letters)
+✅ Enhanced feedback (emojis, colors)
+✅ Beautiful modern UI with gradients and animations
+✅ Mobile responsive design
+✅ Game completion tracking
+✅ Random country selection with no repeats
+
+UI COMPONENTS:
+- Header with animated gradient
+- Stats bar showing category and lives
+- Hint box with country information
+- Letter display with gradient text
+- Alphabet button grid with 3D effects
+- Feedback messages with animations
+- Next/Exit buttons
+- Goodbye screen
+
+STYLING:
+- Glassmorphism containers
+- Neumorphic button design
+- Animated gradients and transitions
+- Responsive grid layout
+- Modern color scheme
+- Shadow effects and blur filters

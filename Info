@@ -1,9 +1,0 @@
-array for all the words;
-array for the displayed word;
-var for the answer;
-
-checkAnswer(){
-    - You enter a value, a single letter (should be case sensitive)
-    - A loop checks if that value is in the string.
-    - Returns correct or wrong 
-}

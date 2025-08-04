@@ -1,45 +1,265 @@
-body{
-    margin: 50px;
-    text-align: center;
+body {
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: #333;
 }
 
-header{
-    font-size: 56px;
-    background-color: black;
-    color: white;
+header {
+  font-size: 4rem;
+  background: linear-gradient(
+    45deg,
+    #ff6b6b,
+    #4ecdc4,
+    #45b7d1,
+    #96ceb4,
+    #feca57
+  );
+  background-size: 300% 300%;
+  animation: gradientShift 3s ease infinite;
+  color: white;
+  padding: 20px;
+  margin: -20px -20px 30px -20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-
-.container1{
-    display: block;
-    
-
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
-.buttons{
 
-    display: grid;
-    grid-template-columns: auto auto auto auto auto auto;
-    grid-template-rows:auto;
-    justify-items: center;
-    grid-gap: 10px;
-    padding: 10px;
-    margin-left: 270px;
-    margin-right: 270px;
+.container1 {
+  display: block;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 0 auto 20px auto;
+  max-width: 800px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
-.buttons > button{
-    align-items: center;
+
+.statsBar {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.statsBar h2,
+.statsBar h3 {
+  margin: 5px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.hint-box {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  color: white;
+  padding: 15px;
+  border-radius: 15px;
+  margin: 20px 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.keyboard-hint {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 5px 0 0 0;
+  font-style: italic;
+}
+
+.buttons > button:disabled {
+  background: linear-gradient(145deg, #d1d1d1, #c8c8c8) !important;
+  color: #888 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: inset 2px 2px 5px #b8b8b8, inset -2px -2px 5px #e0e0e0 !important;
+}
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  grid-gap: 12px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  justify-items: center;
+}
+.buttons > button {
+  height: 50px;
+  width: 50px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.buttons > button:active {
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow: inset 5px 5px 10px #d1d1d1, inset -5px -5px 10px #ffffff;
+  transform: scale(0.95);
+}
+
+.buttons > button:hover {
+  background: linear-gradient(145deg, #4ecdc4, #45b7d1);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(69, 183, 209, 0.4);
+}
+
+#display {
+  font-size: 3.5rem;
+  color: #2c3e50;
+  font-weight: bold;
+  letter-spacing: 8px;
+  margin: 30px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+#comment {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 15px 0;
+  padding: 10px;
+  border-radius: 10px;
+  animation: fadeIn 0.5s ease;
+}
+
+#tryAgain {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container2 {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+.container2 button {
+  background: linear-gradient(145deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  margin: 10px;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.container2 button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.container2 button:active {
+  transform: translateY(-1px);
+}
+
+.container3 {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 50px;
+  margin: 0 auto;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.container3 h1 {
+  color: #667eea;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  header {
+    font-size: 2.5rem;
+    margin: -20px -20px 20px -20px;
+  }
+
+  .container1 {
+    margin: 0 10px 20px 10px;
+    padding: 20px;
+  }
+
+  .buttons {
+    grid-template-columns: repeat(6, 1fr);
+    max-width: 400px;
+    grid-gap: 8px;
+  }
+
+  .buttons > button {
     height: 40px;
     width: 40px;
-    padding: px 0;
-    border-radius: 0%;
-    outline: none;
-}
+    font-size: 16px;
+  }
 
-.buttons > button:hover{
-    background-color: grey;
-}
-
-#display{
-    font-size: 50px;
-    color: brown;
+  #display {
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+  }
 }
